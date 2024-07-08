@@ -1,3 +1,4 @@
+import { Container } from "react-bootstrap";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Detail from "./pages/post/Detail";
@@ -11,14 +12,16 @@ function App() {
   return (
     <div>
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/saveForm" element={<SaveForm />} />
-        <Route path="/post/:id" element={<Detail />} />
-        <Route path="/loginForm" element={<LoginForm />} />
-        <Route path="/joinForm" element={<JoinForm />} />
-        <Route path="/updateForm/:id" element={<UpdateForm />} />
-      </Routes>
+      <Container>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/saveForm" element={<SaveForm />} />
+          <Route path="/post/:id" element={<Detail />} />
+          <Route path="/loginForm" element={<LoginForm />} />
+          <Route path="/joinForm" elment={<JoinForm />} />
+          <Route path="/updateForm/:id" element={<UpdateForm />} />
+        </Routes>
+      </Container>
     </div>
   );
 }
