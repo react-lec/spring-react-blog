@@ -21,12 +21,14 @@ public class BoardController {
     private final BoardService boardService;
     private final HttpSession session;
 
+    // 인증 필요 없음
     @GetMapping("/")
     public ResponseEntity<?> main(){
         List<BoardResponse.MainDTO> respDTO = boardService.글목록조회();
         return ResponseEntity.ok(new ApiUtil(respDTO));
     }
 
+    // 인증 필요 없음
     @GetMapping("/api/boards/{id}/detail")
     public ResponseEntity<?> detail(@PathVariable Integer id){
         User sessionUser = (User) session.getAttribute("sessionUser");

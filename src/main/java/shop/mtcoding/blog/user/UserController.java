@@ -21,6 +21,7 @@ public class UserController {
     private final UserService userService;
     private final HttpSession session;
 
+
     @GetMapping("/api/users/{id}")
     public ResponseEntity<?> userinfo(@PathVariable Integer id){
         UserResponse.DTO respDTO = userService.회원조회(id);
