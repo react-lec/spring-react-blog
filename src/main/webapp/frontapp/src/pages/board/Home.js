@@ -28,8 +28,6 @@ const Home = () => {
       method: "get",
     });
 
-    console.log("page", response.data.body);
-
     setModel(response.data.body);
   }
 
@@ -37,7 +35,6 @@ const Home = () => {
     setPage(page - 1);
   }
   function next() {
-    console.log("next click");
     setPage(page + 1);
   }
 

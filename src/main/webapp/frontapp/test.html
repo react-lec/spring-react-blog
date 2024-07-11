@@ -7,13 +7,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector("#password").value = "hello";
+        });
+    </script>
     비번 : <input type="text" id="password" />
     비번체크 : <input type="text" id="passwordCheck" />
 
-    <script>
-        $("#passwordCheck").keypress((e)=>{
-            console.log(e.target.value);
-        });
-    </script>
+ 
 </body>
 </html>
