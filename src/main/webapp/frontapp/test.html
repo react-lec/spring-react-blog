@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +8,12 @@
 </head>
 <body>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelector("#password").value = "hello";
+        $(document).ready(function(){
+            $("#box").css("color", "red");
         });
     </script>
-    비번 : <input type="text" id="password" />
-    비번체크 : <input type="text" id="passwordCheck" />
+    <h1 id="box">Hello World</h1>
+    <button onclick="myClick()">색상변경</button>
 
- 
 </body>
 </html>
