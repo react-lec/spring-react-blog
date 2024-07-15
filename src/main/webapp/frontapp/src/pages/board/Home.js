@@ -50,7 +50,6 @@ const Home = () => {
         <FormControl
           type="search"
           placeholder="Search"
-          placeholder="Search"
           className="me-2"
           aria-label="Search"
           value={keyword}
