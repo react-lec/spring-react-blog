@@ -32,6 +32,7 @@ public class CorsFilter implements Filter {
         resp.setHeader("Access-Control-Expose-Headers", "Content-Type, Authorization");
 
         if ("OPTIONS".equalsIgnoreCase(req.getMethod())) {
+            System.out.println("Authorization이 포함될때만?");
             resp.setStatus(200);
             return;
         }

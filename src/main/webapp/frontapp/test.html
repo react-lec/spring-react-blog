@@ -2,18 +2,82 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Title</title>
+
 </head>
 <body>
-    <script>
-        $(document).ready(function(){
-            $("#box").css("color", "red");
-        });
-    </script>
-    <h1 id="box">Hello World</h1>
-    <button onclick="myClick()">색상변경</button>
+<h1>사진등록페이지</h1>
+<hr>
+<ul>
+    <li>
+        <a href="/">메인페이지</a>
+    </li>
+    <li>
+        <a href="/uploadForm">사진등록페이지</a>
+    </li>
+    <li>
+        <a href="/uploadCheck">사진확인페이지</a>
+    </li>
+</ul>
+
+<form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+    <input type="text" id="title" name="title" placeholder="사진 제목...">
+    <input type="file" id="imgFilename" name="imgFilename">
+    <button>사진 업로드</button>
+    <br>
+
+</form>
+<button onclick="getSize()">사이즈확인</button>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    const WIDTH = 30;
+    const HEIGHT = 20;
+    let resizedFile;
+
+    // Canvas 요소를 생성하고 body에 추가
+    let canvas = $("<canvas>")
+            .attr("width", WIDTH)
+            .attr("height", HEIGHT)
+            .appendTo("body");
+
+    $('#imgFilename').on('change', function () {
+        const file = this.files[0];
+        if (file) {
+            const context = canvas[0].getContext("2d");
+            //새로운 이미지 객체 생성
+            const img = new Image();
+            //파일 읽기를 위한 FileReader 객체를 생성
+            const reader = new FileReader();
+
+            //파일 읽기가 완료되면 실행되는 콜백 함수 // onload 이벤트
+            reader.onload = function (e) {
+                console.log(e);
+
+                img.onload = function () {
+                    //이미지를 캔버스에 그림
+                    context.drawImage(img, 0, 0, canvas.width(), canvas.height());
+
+                    canvas[0].toBlob(function (blob) {
+                        resizedFile = new File([blob], file.name, {type: file.type});
+                    }, file.type);
+                };
+
+                img.src = e.target.result;
+            };
+
+            // 바이너리 -> 문자열로 변환
+            reader.readAsDataURL(file);
+        }
+    });
+
+    function getSize(){
+        console.log(resizedFile);
+    }
+
+
+
+</script>
 
 </body>
 </html>

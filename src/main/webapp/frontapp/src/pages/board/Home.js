@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Pagination } from "react-bootstrap";
-import PostItem from "../../components/BoardItem";
+import BoardItem from "../../components/BoardItem";
 
 const Home = () => {
   const [page, setPage] = useState(0);
@@ -41,7 +41,12 @@ const Home = () => {
   return (
     <div>
       {model.boards.map((board) => (
-        <PostItem key={board.id} id={board.id} title={board.title} />
+        <BoardItem
+          key={board.id}
+          id={board.id}
+          title={board.title}
+          page={page}
+        />
       ))}
 
       <br />
