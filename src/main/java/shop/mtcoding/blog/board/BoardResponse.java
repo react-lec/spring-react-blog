@@ -4,7 +4,6 @@ import lombok.Data;
 import org.springframework.data.domain.Page;
 import shop.mtcoding.blog.reply.Reply;
 import shop.mtcoding.blog.user.SessionUser;
-import shop.mtcoding.blog.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,9 +41,9 @@ public class BoardResponse {
             this.userId = board.getUser().getId();
             this.username = board.getUser().getUsername(); // join 해서 가져왔음
             this.isOwner = false;
-            if(sessionUser != null){
-                System.out.println("로그인한 userId : "+sessionUser.getId());
-                if(sessionUser.getId() == userId) isOwner = true;
+            if (sessionUser != null) {
+                System.out.println("로그인한 userId : " + sessionUser.getId());
+                if (sessionUser.getId() == userId) isOwner = true;
             }
 
             this.replies = board.getReplies().stream().map(reply -> new ReplyDTO(reply, sessionUser)).toList();
@@ -64,8 +63,8 @@ public class BoardResponse {
                 this.userId = reply.getUser().getId();
                 this.username = reply.getUser().getUsername(); // lazy loading 발동 (in query)
                 this.isOwner = false;
-                if(sessionUser != null){
-                    if(sessionUser.getId() == userId) isOwner = true;
+                if (sessionUser != null) {
+                    if (sessionUser.getId() == userId) isOwner = true;
                 }
             }
         }
