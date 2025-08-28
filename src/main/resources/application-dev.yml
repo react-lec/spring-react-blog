@@ -31,6 +31,9 @@ spring:
         default_batch_fetch_size: 10
     defer-datasource-initialization: true
     open-in-view: true
+  # 세션관리
+  session:
+    store-type: none
 
 allow:
   host: http://localhost:3000
